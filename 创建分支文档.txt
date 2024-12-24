@@ -1,0 +1,94 @@
+如何初始化Git并创建Git仓库、设置GitHub远程仓库地址（使用SSH）：
+
+在哪里输入这些命令：
+
+你可以在命令行工具中输入这些命令，例如：
+
+1. Windows命令提示符（CMD）
+2. PowerShell
+3. Git Bash
+4. VS Code内置终端
+
+打开任意一个命令行工具，然后按照步骤输入相应的命令即可。
+
+1. 初始化Git：
+```sh
+git init
+```
+
+2. 添加文件到仓库并提交：
+```sh
+git add .
+git commit -m "Initial commit"
+```
+
+3. 创建SSH密钥（如果还没有的话）：
+```sh
+ssh-keygen -t rsa -b 4096 -C "zyn17862060252@163.com"
+```
+按照提示生成SSH密钥，并将公钥添加到GitHub账户中。
+
+如何在GitHub中设置SSH相关设置：
+
+(1) 生成SSH密钥（如果还没有的话）：
+```sh
+ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+```
+按照提示生成SSH密钥。
+
+(2) 复制SSH公钥：
+```sh
+cat ~/.ssh/id_rsa.pub
+```
+将输出的内容复制到剪贴板。
+
+(3) 登录GitHub并进入设置页面：
+   - 点击右上角的头像，选择“Settings”。
+
+(4) 在左侧菜单中选择“SSH and GPG keys”。
+
+(5) 点击“New SSH key”按钮。
+
+(6) 在“Title”字段中输入一个描述性的名称，例如“My Laptop”。
+
+(7) 在“Key”字段中粘贴之前复制的SSH公钥。
+
+(8) 点击“Add SSH key”按钮保存。
+
+这样就完成了在GitHub中设置SSH相关设置的步骤。
+
+4. 添加GitHub远程仓库地址（使用SSH）：
+```sh
+git remote add origin git@github.com:your_username/your_repository.git
+```
+
+`git remote add origin git@github.com:your_username/your_repository.git` 中的参数说明：
+
+- `origin`：这是远程仓库的名称，通常使用 `origin` 作为默认名称。
+- `git@github.com:your_username/your_repository.git`：这是远程仓库的地址，使用SSH协议。
+
+如何获取当前项目的用户名和仓库名：
+
+(1) 打开终端或命令行工具。
+(2) 进入项目所在的目录。
+(3) 使用以下命令查看远程仓库地址：
+```sh
+git remote -v
+```
+(4) 输出结果中会显示远程仓库的URL：
+```
+origin  git@github.com:nannan9/VScodeAI.git (fetch)
+origin  git@github.com:nannan9/VScodeAI.git (push)
+```
+(5) 从URL中提取用户名和仓库名：
+   - `nannan9` 是你的GitHub用户名。
+   - `VScodeAI` 是你的仓库名称。
+
+这样就可以获取当前项目的用户名和仓库名。
+
+5. 推送本地仓库到GitHub：
+```sh
+git push -u origin master
+```
+
+这样就完成了Git仓库的初始化、创建和GitHub远程仓库地址的设置，并使用SSH进行连接。

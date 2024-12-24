@@ -1,0 +1,39 @@
+如何删除发布的分支：
+
+1. 确认你已经切换到其他分支（不能在要删除的分支上）。
+2. 使用Git命令删除本地和远程分支。
+
+删除本地分支：
+```sh
+git branch -d <branch_name>
+```
+
+如果分支没有被合并，使用强制删除：
+```sh
+git branch -D <branch_name>
+```
+
+`git branch -d <branch_name>` 和 `git branch -D <branch_name>` 的区别：
+
+- `git branch -d <branch_name>`：删除本地分支。如果该分支没有被合并到当前分支或其他分支，Git会阻止删除操作。
+- `git branch -D <branch_name>`：强制删除本地分支，即使该分支没有被合并。
+
+删除远程分支：
+```sh
+git push origin --delete <branch_name>
+```
+
+使用示例：
+```sh
+git branch -d feature-branch  # 删除已合并的本地分支
+git branch -D feature-branch  # 强制删除未合并的本地分支
+git push origin --delete feature-branch
+```
+
+示例：
+假设你要删除名为 `feature-branch` 的分支：
+```sh
+git branch -d feature-branch
+git push origin --delete feature-branch
+```
+这样就可以删除本地和远程的 `feature-branch` 分支。
